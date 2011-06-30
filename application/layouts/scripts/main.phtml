@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt" xml:lang="lt">
+	<head>
+		<title>Square web programa</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<base href="/" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
+	</head>
+	<body>
+		<div id="header">
+			<div id="logo">
+				<img src="/images/logo.gif" />
+			</div><!-- logo pabaiga -->
+			<div id="menu">
+				<ul>
+					<li><a href="<?php echo $this->url(array(), 'home'); ?>">Pradinis</a></li>
+					<li><a href="<?php echo $this->url(array('page' => 'services'), 'static-content'); ?>">Paslaugos</a></li>
+					<li>
+						<a href="<?php echo $this->url(array(
+							'module' => 'catalog',
+							'controller' => 'item',
+							'action' => 'search'), 'default', true); ?>">
+							Katalogas
+						</a>
+					</li>
+					<li><a href="<?php echo $this->url(array(), 'contact'); ?>">Susisiekti</a></li>
+				</ul>
+			</div><!-- menu pabaiga -->
+		</div><!-- header pabaiga -->
+		<div id="content">
+			<?php echo $this->layout()->content; ?>
+		</div><!-- content pabaiga -->
+		<div id="footer">
+			<p>Sukurta naudojantis <a href="http://framework.zend.com/">Zend Framework</a></p>
+		</div><!-- footer pabaiga -->
+	</body>
+</html>

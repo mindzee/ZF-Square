@@ -1,0 +1,57 @@
+<h2>Išvedamas sąrašas</h2>
+<?php if (count($this->records)): ?>
+<div class="pager">
+	Puslapiai: <?php echo $this->pages; ?>
+</div><!-- pager pabaiga -->
+<div id="records">
+	<form method="post" action="<?php echo $this->url(array(), 'admin-catalog-delete'); ?>">
+		<table>
+			<tr>
+				<td></td>
+				<td class="key">Prekės vieneto ID</td>
+				<td class="key">Pavadinimas</td>
+				<td class="key">Nominali vertė</td>
+				<td class="key">Šalis</td>
+				<td class="key">Įvertinimas</td>
+				<td class="key">Metai</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<?php foreach ($this->records as $record): ?>
+			<tr>
+				<td>
+					<input type="checkbox" name="ids[]" value="<?php echo $record['record_id']; ?>" style="width: 2px;" />
+				</td>
+				<td><?php echo $this->escape($record['record_id']); ?></td>
+				<td><?php echo $this->escape($record['title']); ?></td>
+				<td><?php echo $this->escape(sprintf('%1.2f', $record['denomination'])); ?></td>
+				<td><?php echo $this->escape($record['Square_Model_Country']['country_name']); ?></td>
+				<td><?php echo $this->escape($record['Square_Model_Grade']['grade_name']); ?></td>
+				<td><?php echo $this->escape($record['year']); ?></td>
+				<td>
+					<a href="<?php echo $this->url(array('id' => $record['record_id']), 'admin-catalog-display'); ?>">Parodyti</a>
+				</td>
+				<td>
+					<a href="<?php echo $this->url(array('id' => $record['record_id']), 'admin-catalog-update'); ?>">Anaujinti</a>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+			<tr>
+				<td colspan="7">
+					<input type="submit" name="submit" style="width: 150px;" value="Ištrinti pasirinktą" />
+				</td>
+				<td colspan="2">
+					<a href="<?php echo $this->url(array(), 'admin-fulltext-index-create'); ?>">
+						Atnaujinti full-text indeksavimą
+					</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div><!-- records pabaiga -->
+<div class="pager">
+	Puslapiai: <?php echo $this->pages; ?>
+</div><!-- pager pabaiga -->
+<?php else: ?>
+<h3>Nerasta duomenų</h3>
+<?php endif; ?>

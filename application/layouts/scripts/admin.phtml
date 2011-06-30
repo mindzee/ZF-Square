@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt" xml:lang="lt">
+	<head>
+		<title>Square puslapio administravimas</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="lt" />
+		<base href="/" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/css/admin.css" media="screen" />
+		<script type="text/javascript" src="/js/form.js"></script>
+	</head>
+	<body>
+		<div id="header">
+			<div id="logo">
+				<img src="/images/logo-admin.gif" alt="Administratoriaus Logo" />
+			</div><!-- logo pabaiga -->
+			<div id="menu">
+				<?php if (Zend_Auth::getInstance()->hasIdentity()): ?>
+				<a href="<?php echo $this->url(array(), 'admin-catalog-index'); ?>">Katalogas</a>
+				<a href="<?php echo $this->url(array(), 'logout'); ?>">Atsijungti</a>
+				<?php else: ?>
+				<a href="<?php echo $this->url(array(), 'login'); ?>">Prisijungti</a>
+				<?php endif; ?>
+			</div><!-- menu pabaiga -->
+		</div><!-- header pabaiga -->
+		<div id="content">
+			<?php echo $this->layout()->content; ?>
+		</div><!-- content pabaiga -->
+		<div id="footer">
+			<p>Sukurta naudojantis <a href="http://framework.zend.com/">Zend Framework</a></p>
+		</div><!-- footer pabaiga -->
+	</body>
+</html>

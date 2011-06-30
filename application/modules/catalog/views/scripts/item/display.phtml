@@ -1,0 +1,48 @@
+<h2>Peržiūrėti elementą</h2>
+<h3>
+	PARDUODAMAS:
+	<?php echo $this->escape($this->item['title']); ?> -
+	<?php echo $this->escape($this->item['year']); ?> -
+	<?php echo $this->escape($this->item['Square_Model_Grade']['grade_name']); ?>
+</h3>
+<div id="container">
+	<div id="record">
+		<table>
+			<tr>
+				<td class="key">Pavadinimas:</td>
+				<td class="value"><?php echo $this->escape($this->item['title']); ?></td>
+			</tr>
+			<tr>
+				<td class="key">Tipas:</td>
+				<td class="value"><?php echo $this->escape($this->item['Square_Model_Type']['type_name']); ?></td>
+			</tr>
+			<tr>
+				<td class="key">Metai:</td>
+				<td class="value"><?php echo $this->escape($this->item['year']); ?></td>
+			</tr>
+			<tr>
+				<td class="key">Šalis:</td>
+				<td class="value"><?php echo $this->escape($this->item['Square_Model_Country']['country_name']); ?></td>
+			</tr>
+			<tr>
+				<td class="key">Nominali vertė:</td>
+				<td class="value"><?php echo $this->escape(sprintf('%01.2f', $this->item['denomination'])); ?></td>
+			</tr>
+			<tr>
+				<td class="key">Įvertinimas:</td>
+				<td class="value"><?php echo $this->escape($this->item['Square_Model_Grade']['grade_name']); ?></td>
+			</tr>
+			<tr>
+				<td class="key">Pardavimo kaina:</td>
+				<td class="value">
+					<?php echo $this->escape($this->item['sale_price_min']); ?> - 
+					<?php echo $this->escape($this->item['sale_price_max']); ?>
+				</td>
+			</tr>
+			<tr>
+				<td class="key">Apibūdinimas:</td>
+				<td class="value"><?php echo $this->escape($this->item['description']); ?></td>
+			</tr>
+		</table>
+	</div><!-- record pabaiga -->
+</div><!-- conatiner pabaiga -->

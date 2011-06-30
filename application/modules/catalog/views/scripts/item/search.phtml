@@ -1,0 +1,40 @@
+<h2>Produkto vieneto paieška</h2>
+<?php echo $this->form; ?>
+
+<h2>Paieškos rezultatai</h2>
+<p>Rasti <?php echo (count($this->results)); ?> rezultatai</p>
+
+<?php if (count($this->results)): ?>
+	<?php $x = 1; ?>
+	<?php foreach ($this->results as $result): ?>
+	<div>
+	<?php echo $x; ?>
+		<a href="<?php echo $this->url(array('id' => $this->escape($result->RecordID)), 'catalog-display'); ?>">
+			<?php echo $this->escape($result->Title); ?>
+			(<?php echo $this->escape($result->Year); ?>)
+		</a>
+		
+		<br />
+		<strong>
+			Įvertinimas:
+			<?php echo $this->escape($result->Grade); ?> | 
+			Šalis:
+			<?php echo $this->escape($result->Country); ?> | 
+			Pardavimo kaina:
+			<?php echo sprintf('%0.2f', $this->escape($result->SalePriceMin)); ?> iki 
+			<?php echo sprintf('%0.2f', $this->escape($result->SalePriceMax)); ?>
+		</strong>
+	</div>
+	<br />
+		<?php $x++; ?>
+	<?php endforeach; ?>
+<?php endif; ?>
+
+<div>
+	<a href="<?php echo $this->url(array(
+		'module' => 'catalog', 
+		'controller' => 'item', 
+		'action' => 'create'), null, true); ?>">
+		Įvesti naują vienetą
+	</a>
+</div>

@@ -1,0 +1,36 @@
+<?php
+
+// sukuriamas XML dokumentas
+$dom = new DOMDocument('1.0', 'utf-8');
+
+// sukuriamas root elementas
+$root = $dom->createElementNS('http://square.host', 'square:document');
+
+$dom->appendChild($root);
+
+// paverciama i SimpleXML
+$xml = simplexml_import_dom($dom);
+
+// idedami ataiskaitos elementai
+$xml->addChild('matches', count($this->results));
+$xml->addChild('searchTime', time());
+
+// idedami resultatu elementai
+$results = $xml->addChild('results');
+
+foreach ($this->results as $r)
+{
+	$result = $results->addChild('result');
+	$result->addChild('id', $this->escape($r->RecordID));
+	$result->addChild('title', $this->escape($r->Title));
+	$result->addChild('year', $this->escape($r->Year));
+	$result->addChild('grade', $this->escape($r->Grade));
+	$result->addChild('country', $this->escape($r->Country));
+	
+	$price = $result->addChild('price');
+	$price->addChild('min', $this->escape($r->SalePriceMin));
+	$price->addChild('max', $this->escape($r->SalePriceMax));
+}
+
+echo $xml->asXML();
+?>
