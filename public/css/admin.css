@@ -1,0 +1,40 @@
+body 
+{
+  	margin: 0; 
+  	padding: 0; 
+  	font-family: 'Verdana', sans-serif;
+  	color: black;
+}
+
+#header 
+{
+  	background: black;
+  	border-bottom: dashed 5px white;
+}
+
+#content 
+{
+  	background-image: url('/images/watermark-admin.gif');
+  	background-attachment: fixed;
+  	background-repeat: no-repeat;
+  	background-position: right 120px;
+}
+
+#footer 
+{
+  	background: black;
+}
+
+#pager 
+{
+  	padding-top: 8px;
+  	padding-bottom: 8px;
+}
+
+#pager span.current 
+{
+  	border: solid 2px black;
+  	font-weight: bolder;
+  	padding: 3px;
+  	color: black;
+}
